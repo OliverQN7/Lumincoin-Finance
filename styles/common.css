@@ -1,0 +1,75 @@
+@font-face {
+    font-family: "Roboto Regular";
+    font-weight: 400;
+    src: url("/static/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Roboto Medium";
+    font-weight: 500;
+    src: url("/static/fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Roboto Bold";
+    font-weight: 700;
+    src: url("/static/fonts/Roboto-Bold.ttf");
+}
+
+:root {
+    --title__color: #052c65;
+    --input__label-text: #6c757d;
+    --main__color: #0D6EFD;
+    --chart__color: #290661;
+    --border__color: #D9D9D9;
+}
+
+body {
+    font-family: "Roboto Regular", sans-serif;
+}
+
+.main__title {
+    font-family: "Roboto Medium", sans-serif;
+    font-size: 40px;
+    color: var(--title__color);
+}
+
+
+.main__form-input, .input__icon {
+    height: 38px;
+    min-height: 38px;
+}
+
+.input__icon {
+    width: 38px;
+    padding: 10px;
+}
+
+.input__block-input, .input__block-label {
+    height: 38px !important;
+    min-height: 38px !important;
+}
+
+.input__block-label {
+    font-size: 15px;
+    line-height: 160%;
+    color: var(--input__label-text);
+    display: flex;
+    align-items: center;
+}
+
+.input__block {
+    transition: none;
+}
+
+.input__block > .input__block-input:not(:focus) + .input__block-label {
+    display: flex;
+}
+
+.input__block > .input__block-input:focus + .input__block-label {
+    display: none;
+}
+
+.main__link {
+    font-size: 12px;
+}

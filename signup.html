@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/signup.css">
+    <title>Регистрация</title>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100">
+<section class="main d-flex py-4">
+    <div class="container">
+        <div class="main__logo d-flex justify-content-center mb-5">
+            <img src="static/images/logo.png" alt="Логотип">
+        </div>
+        <h1 class="main__title mb-3">Создайте аккаунт</h1>
+        <div class="main__form form-group d-flex flex-column">
+            <div class="main__form-input input-group mb-3">
+                <div class="input__icon input-group-text">
+                    <img src="static/images/icons/fio.svg" alt="ФИО">
+                </div>
+                <div class="input__block form-floating">
+                    <input type="text" class="input__block-input form-control" id="input-fio" placeholder="ФИО">
+                    <label for="input-fio" class="input__block-label">ФИО</label>
+                </div>
+            </div>
+            <div class="main__form-input input-group mb-3">
+                <div class="input__icon input-group-text">
+                    <img src="static/images/icons/email.svg" alt="Электронная почта">
+                </div>
+                <div class="input__block form-floating">
+                    <input type="email" class="input__block-input form-control" id="input-email"
+                           placeholder="Электронная почта">
+                    <label for="input-email" class="input__block-label">Электронная почта</label>
+                </div>
+            </div>
+            <div class="main__form-input input-group mb-3">
+                <div class="input__icon input-group-text">
+                    <img src="static/images/icons/password.svg" alt="Пароль">
+                </div>
+                <div class="input__block form-floating">
+                    <input type="password" class="input__block-input form-control" id="input-password"
+                           placeholder="Пароль">
+                    <label for="input-password" class="input__block-label">Пароль</label>
+                </div>
+            </div>
+            <div class="main__form-input input-group mb-3">
+                <div class="input__icon input-group-text">
+                    <img src="static/images/icons/password.svg" alt="Подтверждение пароля">
+                </div>
+                <div class="input__block form-floating">
+                    <input type="password" class="input__block-input form-control" id="input-passwordConfirm"
+                           placeholder="Подтверждение пароля">
+                    <label for="input-passwordConfirm" class="input__block-label">Подтверждение пароля</label>
+                </div>
+            </div>
+            <button class="btn bg-primary text-white mb-3">Войти</button>
+            <div class="main__link">Уже есть аккаунт? <a href="javascript:void(0);">Войдите в систему</a></div>
+        </div>
+    </div>
+</section>
+<script src="script/bootstrap.min.js"></script>
+</body>
+</html>
