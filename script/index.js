@@ -1,8 +1,8 @@
-import {Chart} from "chart.js";
+import {Chart} from './chart.min.js';
 
 const ctx = document.getElementById("income-chart");
 
-new Chart(ctx, {
+const myChart = new Chart(ctx, {
     type: 'pie',
     data: {
         labels: ["Red", "Orange", "Yellow", "Green", "Blue"],
@@ -19,4 +19,7 @@ new Chart(ctx, {
             hoverOffset: 4
         }]
     }
-})
+});
+
+myChart()
+

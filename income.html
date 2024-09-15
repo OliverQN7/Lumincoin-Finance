@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/common.css">
-    <link rel="stylesheet" href="styles/index.css">
-    <title>Главная</title>
+    <link rel="stylesheet" href="styles/income.css">
+    <title>Доходы</title>
 </head>
 <body>
 <section class="main">
@@ -19,7 +19,7 @@
         <hr>
         <ul class="main__sidebar-nav nav nav-pills flex-column mb-auto">
             <li class="sidebar-item">
-                <a href="javascript:void(0);" class="sidebar-link nav-link active" aria-current="page">
+                <a href="javascript:void(0);" class="sidebar-link nav-link" aria-current="page">
                     <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -55,7 +55,7 @@
             <li class="sidebar-item">
                 <a href="javascript:void(0);"
                    class="sidebar-link btn btn-toggle has-dropdown collapsed"
-                   data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false"
+                   data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="true"
                    aria-controls="category">
                     <span>Категории <svg class="link-arrow" width="7" height="14" viewBox="0 0 7 14" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@
                                               fill="#052C65"/>
                                         </svg></span>
                 </a>
-                <ul class="sidebar-dropdown list-unstyled collapse" id="category" data-bs-parent="#sidebar">
+                <ul class="sidebar-dropdown list-unstyled collapse show" id="category" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
                         <a href="javascript:void(0);" class="sidebar-link btn btn-category">Доходы</a>
                     </li>
@@ -87,36 +87,8 @@
     </aside>
     <div class="main__content">
         <div class="container main__content-container">
-            <div class="main__content-title">Главная</div>
-            <div class="main__content-tabs">
-                <div class="tab tab-today btn btn-secondary">Сегодня</div>
-                <div class="tab tab-week btn btn-outline-secondary">Неделя</div>
-                <div class="tab tab-month btn btn-outline-secondary">Месяц</div>
-                <div class="tab tab-year btn btn-outline-secondary">Год</div>
-                <div class="tab tab-all btn btn-outline-secondary">Все</div>
-                <div class="tab tab-interval ">
-                    <div class="tab interval btn btn-outline-secondary">Интервал</div>
-                    с
-                    <div class="interval-date text-secondary">Дата</div>
-                    с
-                    <div class="interval-date text-secondary">Дата</div>
-                </div>
-            </div>
-            <div class="main__content-charts">
-                <div class="chart__income">
-                    <div class="chart__income-title chart-title">
-                        Доходы
-                    </div>
-                    <canvas class="chart__income-chart" id="income-chart"></canvas>
-                </div>
-                <div class="chart__line"></div>
-                <div class="chart__expenses">
-                    <div class="chart__expenses-title chart-title">
-                        Расходы
-                    </div>
-                    <div class="chart__expenses-chart" id="expenses-chart"></div>
-                </div>
-            </div>
+            <div class="main__content-title">Доходы</div>
+
         </div>
     </div>
 </section>
