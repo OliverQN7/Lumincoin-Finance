@@ -163,6 +163,10 @@ hr {
     color: var(--main__color) !important;
 }
 
+.expenses {
+    border-radius: 0 0 10px 10px;
+}
+
 .active {
     color: white !important;
 }
