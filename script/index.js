@@ -1,4 +1,4 @@
-import {Chart} from './chart.min.js';
+import {Chart} from 'chart.js/auto';
 
 const ctx = document.getElementById("income-chart");
 

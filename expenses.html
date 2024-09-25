@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/common.css">
-    <title>Доходы</title>
+    <title>Расходы</title>
 </head>
 <body>
 <section class="main">
@@ -18,7 +18,7 @@
         <div class="main__sidebar-border"></div>
         <ul class="main__sidebar-nav nav nav-pills flex-column mb-auto">
             <li class="sidebar-item">
-                <a href="index.html" class="sidebar-link nav-link" aria-current="page">
+                <a href="./index.html" class="sidebar-link nav-link" aria-current="page">
                     <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -67,10 +67,10 @@
                 </a>
                 <ul class="sidebar-dropdown list-unstyled collapse show" id="category" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="income.html" class="sidebar-link btn btn-category active-category">Доходы</a>
+                        <a href="./income.html" class="sidebar-link btn btn-category">Доходы</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="expenses.html" class="sidebar-link btn btn-category">Расходы</a>
+                        <a href="./expenses.html" class="sidebar-link btn btn-category active-category">Расходы</a>
                     </li>
                 </ul>
             </li>
@@ -88,24 +88,12 @@
     </aside>
     <div class="main__content">
         <div class="container main__content-container">
-            <h1 class="main__content-title">Доходы</h1>
+            <h1 class="main__content-title">Расходы</h1>
             <div class="main__content-block">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Депозиты</h5>
-                        <button class="card-btn btn btn-primary" onclick="location.href='income-editing.html'">
-                            Редактировать
-                        </button>
-                        <button type="button" class="card-btn btn btn-danger"
-                                data-bs-toggle="modal"
-                                data-bs-target="#deleteModal">Удалить
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Зарплата</h5>
-                        <button class="card-btn btn btn-primary" onclick="location.href='income-editing.html'">
+                        <h5 class="card-title">Еда</h5>
+                        <button class="card-btn btn btn-primary" onclick="location.href='expenses-editing.html'">
                             Редактировать
                         </button>
                         <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
@@ -115,8 +103,8 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Сбережения</h5>
-                        <button class="card-btn btn btn-primary" onclick="location.href='income-editing.html'">
+                        <h5 class="card-title">Жилье</h5>
+                        <button class="card-btn btn btn-primary" onclick="location.href='expenses-editing.html'">
                             Редактировать
                         </button>
                         <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
@@ -126,8 +114,8 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Инвестиции</h5>
-                        <button class="card-btn btn btn-primary" onclick="location.href='income-editing.html'">
+                        <h5 class="card-title">Здоровье</h5>
+                        <button class="card-btn btn btn-primary" onclick="location.href='expenses-editing.html'">
                             Редактировать
                         </button>
                         <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
@@ -136,7 +124,73 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card__add card-body" onclick="location.href='income-create.html'">
+                    <div class="card-body">
+                        <h5 class="card-title">Кафе</h5>
+                        <button class="card-btn btn btn-primary" onclick="location.href='expenses-editing.html'">
+                            Редактировать
+                        </button>
+                        <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Удалить
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Авто</h5>
+                        <button class="card-btn btn btn-primary" onclick="location.href='expenses-editing.html'">
+                            Редактировать
+                        </button>
+                        <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Удалить
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Одежда</h5>
+                        <button class="card-btn btn btn-primary" onclick="location.href='expenses-editing.html'">
+                            Редактировать
+                        </button>
+                        <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Удалить
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Развлечения</h5>
+                        <button class="card-btn btn btn-primary" onclick="location.href='expenses-editing.html'">
+                            Редактировать
+                        </button>
+                        <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Удалить
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Счета</h5>
+                        <button class="card-btn btn btn-primary" onclick="location.href='expenses-editing.html'">
+                            Редактировать
+                        </button>
+                        <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Удалить
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Спорт</h5>
+                        <button class="card-btn btn btn-primary" onclick="location.href='expenses-editing.html'">
+                            Редактировать
+                        </button>
+                        <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Удалить
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__add card-body" onclick="location.href='expenses-create.html'">
                         <button class="card__add-text card-title">+</button>
                     </div>
                 </div>
@@ -147,7 +201,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <p>Вы действительно хотите удалить категорию? Связанные доходы будут удалены навсегда.</p>
+                    <p>Вы действительно хотите удалить категорию?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success">Да, удалить</button>

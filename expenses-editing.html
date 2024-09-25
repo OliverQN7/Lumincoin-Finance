@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/common.css">
-    <title>Доходы</title>
+    <link rel="stylesheet" href="styles/income-create.css">
+    <title>Редактирование категории расходов</title>
 </head>
 <body>
 <section class="main">
@@ -67,10 +68,10 @@
                 </a>
                 <ul class="sidebar-dropdown list-unstyled collapse show" id="category" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="income.html" class="sidebar-link btn btn-category active-category">Доходы</a>
+                        <a href="income.html" class="sidebar-link btn btn-category">Доходы</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="expenses.html" class="sidebar-link btn btn-category">Расходы</a>
+                        <a href="expenses.html" class="sidebar-link btn btn-category active-category">Расходы</a>
                     </li>
                 </ul>
             </li>
@@ -88,57 +89,15 @@
     </aside>
     <div class="main__content">
         <div class="container main__content-container">
-            <h1 class="main__content-title">Доходы</h1>
+            <h1 class="main__content-title">Редактирование категории расходов</h1>
             <div class="main__content-block">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Депозиты</h5>
-                        <button class="card-btn btn btn-primary" onclick="location.href='income-editing.html'">
-                            Редактировать
-                        </button>
-                        <button type="button" class="card-btn btn btn-danger"
-                                data-bs-toggle="modal"
-                                data-bs-target="#deleteModal">Удалить
-                        </button>
-                    </div>
+                <div class="input-group flex-nowrap">
+                    <input type="text" class="form-control" placeholder="Название..." aria-label="search"
+                           aria-describedby="addon-wrapping">
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Зарплата</h5>
-                        <button class="card-btn btn btn-primary" onclick="location.href='income-editing.html'">
-                            Редактировать
-                        </button>
-                        <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal">Удалить
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Сбережения</h5>
-                        <button class="card-btn btn btn-primary" onclick="location.href='income-editing.html'">
-                            Редактировать
-                        </button>
-                        <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal">Удалить
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Инвестиции</h5>
-                        <button class="card-btn btn btn-primary" onclick="location.href='income-editing.html'">
-                            Редактировать
-                        </button>
-                        <button type="button" class="card-btn btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal">Удалить
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card__add card-body" onclick="location.href='income-create.html'">
-                        <button class="card__add-text card-title">+</button>
-                    </div>
+                <div class="block-actions">
+                    <button type="button" class="btn btn-success">Сохранить</button>
+                    <button type="button" class="btn btn-danger">Отмена</button>
                 </div>
             </div>
         </div>
