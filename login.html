@@ -17,15 +17,18 @@
             <img src="static/images/logo.png" alt="Логотип">
         </div>
         <h1 class="main__title mb-3">Вход</h1>
-        <form class="main__form form-group d-flex flex-column">
+        <form class="main__form form-group d-flex flex-column needs-validation" novalidate>
             <div class="main__form-input input-group mb-3">
                 <div class="input__icon input-group-text">
                     <img src="static/images/icons/email.svg" alt="Электронная почта">
                 </div>
                 <div class="input__block form-floating">
                     <input type="email" class="input__block-input form-control" id="input-email"
-                           placeholder="Электронная почта">
+                           placeholder="Электронная почта" required>
                     <label for="input-email" class="input__block-label">Электронная почта</label>
+                    <div class="invalid-feedback">
+                        Неверный адрес электронной почты или пароль.
+                    </div>
                 </div>
             </div>
             <div class="main__form-input input-group mb-3">
@@ -34,15 +37,26 @@
                 </div>
                 <div class="input__block form-floating">
                     <input type="password" class="input__block-input form-control" id="input-password"
-                           placeholder="Пароль">
+                           placeholder="Пароль" required>
                     <label for="input-password" class="input__block-label">Пароль</label>
+                    <div class="invalid-feedback">
+                        Неверный адрес электронной почты или пароль.
+                    </div>
+                </div>
+            </div>
+            <div class="form-check remember mb-3">
+                <input class="form-check-input" type="checkbox" id="remember" required>
+                <label class="form-check-label" for="remember">Запомнить меня</label>
+                <div class="invalid-feedback">
+                    Вы должны дать согласие перед отправкой.
                 </div>
             </div>
             <button class="btn bg-primary text-white mb-3">Войти</button>
-            <div class="main__link">Ещё нет аккаунта? <a href="javascript:void(0);">Пройдите регистрацию</a></div>
+            <div class="main__link">Ещё нет аккаунта? <a href="signup.html">Пройдите регистрацию</a></div>
         </form>
     </div>
 </section>
 <script src="script/bootstrap.min.js"></script>
+<script src="script/common.js"></script>
 </body>
 </html>

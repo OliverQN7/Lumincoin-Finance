@@ -17,14 +17,18 @@
             <img src="static/images/logo.png" alt="Логотип">
         </div>
         <h1 class="main__title mb-3">Создайте аккаунт</h1>
-        <form class="main__form form-group d-flex flex-column">
+        <form class="main__form form-group d-flex flex-column needs-validation" novalidate>
             <div class="main__form-input input-group mb-3">
                 <div class="input__icon input-group-text">
                     <img src="static/images/icons/fio.svg" alt="ФИО">
                 </div>
-                <div class="input__block form-floating">
-                    <input type="text" class="input__block-input form-control" id="input-fio" placeholder="ФИО">
+                <div class="input__block form-floating ">
+                    <input type="text" class="input__block-input form-control" id="input-fio" placeholder="ФИО"
+                           required>
                     <label for="input-fio" class="input__block-label">ФИО</label>
+                    <div class="invalid-feedback">
+                        Введите ФИО.
+                    </div>
                 </div>
             </div>
             <div class="main__form-input input-group mb-3">
@@ -33,8 +37,11 @@
                 </div>
                 <div class="input__block form-floating">
                     <input type="email" class="input__block-input form-control" id="input-email"
-                           placeholder="Электронная почта">
+                           placeholder="Электронная почта" required>
                     <label for="input-email" class="input__block-label">Электронная почта</label>
+                    <div class="invalid-feedback">
+                        Введите электронную почту.
+                    </div>
                 </div>
             </div>
             <div class="main__form-input input-group mb-3">
@@ -43,8 +50,11 @@
                 </div>
                 <div class="input__block form-floating">
                     <input type="password" class="input__block-input form-control" id="input-password"
-                           placeholder="Пароль">
+                           placeholder="Пароль" required>
                     <label for="input-password" class="input__block-label">Пароль</label>
+                    <div class="invalid-feedback">
+                        Введите пароль.
+                    </div>
                 </div>
             </div>
             <div class="main__form-input input-group mb-3">
@@ -53,15 +63,19 @@
                 </div>
                 <div class="input__block form-floating">
                     <input type="password" class="input__block-input form-control" id="input-passwordConfirm"
-                           placeholder="Подтверждение пароля">
+                           placeholder="Подтверждение пароля" required>
                     <label for="input-passwordConfirm" class="input__block-label">Подтверждение пароля</label>
+                    <div class="invalid-feedback">
+                        Пароли не совпадают.
+                    </div>
                 </div>
             </div>
             <button class="btn bg-primary text-white mb-3">Войти</button>
-            <div class="main__link">Уже есть аккаунт? <a href="javascript:void(0);">Войдите в систему</a></div>
+            <div class="main__link">Уже есть аккаунт? <a href="login.html">Войдите в систему</a></div>
         </form>
     </div>
 </section>
 <script src="script/bootstrap.min.js"></script>
+<script src="script/common.js"></script>
 </body>
 </html>
