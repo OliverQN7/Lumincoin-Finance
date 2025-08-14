@@ -164,6 +164,23 @@ export class Router {
                 newRoute.load();
             }
 
+            const sidebarLinks = document.querySelectorAll('#sidebar .sidebar-link');
+            sidebarLinks.forEach(link => link.classList.remove('active'));
+            const sidebarCategoriesBtn = document.querySelector('#sidebar .btn-toggle, #sidebar .has-dropdown');
+            if (sidebarCategoriesBtn) sidebarCategoriesBtn.classList.remove('active');
+            const sidebarDropdown = document.querySelector('.sidebar-dropdown');
+            if (sidebarDropdown) sidebarDropdown.classList.remove('show');
+
+            if (['/income', '/expenses'].includes(urlRoute)) {
+                if (sidebarCategoriesBtn) sidebarCategoriesBtn.classList.add('active');
+                let activeLink = document.querySelector(`.sidebar-dropdown .sidebar-link[href='${urlRoute}']`);
+                if (activeLink) activeLink.classList.add('active');
+                if (sidebarDropdown) sidebarDropdown.classList.add('show');
+            } else {
+                let activeLink = document.querySelector(`#sidebar .sidebar-link[href='${urlRoute}']`);
+                if (activeLink) activeLink.classList.add('active');
+            }
+
             initSidebarEvents();
         }
     }
