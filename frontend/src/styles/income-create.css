@@ -1,0 +1,14 @@
+.main__content-block {
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.block-actions button:not(:last-child) {
+    margin-right: 10px;
+}

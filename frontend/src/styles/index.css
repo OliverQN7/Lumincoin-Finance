@@ -1,0 +1,82 @@
+.main__content-charts {
+    display: flex;
+    align-items: center;
+}
+
+.chart__income {
+    padding: 0 84px;
+}
+
+.chart__expenses {
+    padding: 0 84px;
+}
+
+.chart-title {
+    font-family: "Roboto Medium", sans-serif;
+    font-size: 28px;
+    color: var(--chart__color);
+    text-align: center;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.chart__tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 40px 0;
+}
+
+.chart-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-tab:not(:last-child) {
+    margin-right: 15px;
+}
+
+.tab-block {
+    width: 35px;
+    height: 10px;
+    margin-right: 10px;
+}
+
+.tab-text {
+    font-family: "Roboto Medium", sans-serif;
+    font-size: 12px;
+    color: black;
+    margin-bottom: 0;
+}
+
+.chart__tabs-red .tab-block {
+    background-color: red;
+}
+
+.chart__tabs-orange .tab-block {
+    background-color: orange;
+}
+
+.chart__tabs-yellow .tab-block {
+    background-color: yellow;
+}
+
+.chart__tabs-green .tab-block {
+    background-color: green;
+}
+
+.chart__tabs-blue .tab-block {
+    background-color: blue;
+}
+
+.chart__line {
+    width: 1px;
+    height: 450px;
+    background-color: var(--border__color);
+}

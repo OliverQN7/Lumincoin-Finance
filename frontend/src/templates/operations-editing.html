@@ -1,0 +1,46 @@
+<div class="main__content">
+    <div class="container main__content-container">
+        <h1 class="main__content-title">Редактирование дохода/расхода</h1>
+        <div class="main__content-form">
+            <div class="form__block form__block-type">
+                <input type="text" id="operation-type" class="form-control" placeholder="Тип..." value="Доход">
+                <label for="operation-type"></label>
+            </div>
+            <div class="form__block form__block-category">
+                <input type="text" id="operation-category" class="form-control" placeholder="Категория..."
+                       value="Зарплата">
+                <label for="operation-category"></label>
+            </div>
+            <div class="form__block form__block-sum">
+                <input type="text" id="operation-sum" class="form-control" placeholder="Сумма в $..." value="500$">
+                <label for="operation-sum"></label>
+            </div>
+            <div class="form__block form__block-date">
+                <input type="text" id="operation-date" class="form-control" placeholder="Дата..."
+                       value="25.09.2024">
+                <label for="operation-date"></label>
+            </div>
+            <div class="form__block form__block-comm">
+                <input type="text" id="operation-comm" class="form-control" placeholder="Комментарий...">
+                <label for="operation-comm"></label>
+            </div>
+            <div class="form__block form__block-actions">
+                <button class="btn btn-success">Создать</button>
+                <button class="btn btn-danger">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Вы действительно хотите удалить операцию?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">Да, удалить</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
+            </div>
+        </div>
+    </div>
+</div>
