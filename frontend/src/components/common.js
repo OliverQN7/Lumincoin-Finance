@@ -12,18 +12,4 @@
                 form.classList.add('was-validated')
             }, false)
         })
-
-
 })()
-
-export function initSidebarEvents() {
-    const profile = document.querySelector('.main__sidebar-profile')
-    const logoutBlock = document.querySelector('.main__sidebar-logout')
-
-    if (!profile || !logoutBlock) return;
-
-    profile.addEventListener('click', () => {
-        const isVisible = logoutBlock.style.display === 'flex';
-        logoutBlock.style.display = isVisible ? 'none' : 'flex';
-    })
-}

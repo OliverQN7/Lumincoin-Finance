@@ -28,11 +28,10 @@ export class HttpUtils {
             return result;
         }
 
-        if (response.status <200 || response >= 300) {
+        if (!response || response.status < 200 || response.status >= 300) {
             result.error = true;
         }
 
         return result;
-        // остановился здесь на 1:45:00. Внедрение HttpUtils в компоненты
     }
 }

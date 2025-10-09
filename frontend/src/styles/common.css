@@ -38,6 +38,11 @@ body {
     color: var(--title__color);
 }
 
+.main__form {
+    max-width: 397px;
+    width: 100%;
+    margin: 0 auto;
+}
 
 .main__form-input, .input__icon {
     height: 38px;
@@ -148,24 +153,18 @@ body {
     fill: #ffffff;
 }
 
-.sidebar-dropdown, .show {
+.category {
     border: 1px solid var(--main__color);
     border-top: 0;
     border-radius: 0 0 10px 10px;
-
 }
 
-.sidebar-dropdown li:last-child a {
+.category li:last-child a {
     border-radius: 0 0 10px 10px;;
 }
 
 [aria-expanded="true"] .link-arrow {
     transform: rotate(90deg);
-}
-
-.btn-category {
-    border-radius: 0;
-    color: var(--main__color) !important;
 }
 
 .expenses {
@@ -235,41 +234,10 @@ body {
 }
 
 .main__sidebar-logout {
-    position: absolute;
-
-
-    top: 58px;
-    right: -85px;
-    display: none;
-    flex-direction: row;
-    justify-content: center;
+    display: flex;
     align-items: center;
-
-    background-color: white;
-    border: 1px solid var(--main__color);
-    color: var(--main__color);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-    border-radius: 8px;
-    padding: 10px 14px;
-
-
-    text-decoration: none;
-    z-index: 1000;
-
+    justify-content: space-between;
     transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.main__sidebar-logout::after {
-    content: "";
-    position: absolute;
-    top: 35%;
-    left: -10px;
-    transform: rotate(-90deg);
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent transparent white transparent;
-    filter: drop-shadow(0 -1px 0px var(--main__color));
 }
 
 .main__sidebar-logout:hover {
@@ -455,6 +423,7 @@ body {
     background-color: var(--main__color) !important;
     color: white !important;
 }
+
 .btn-toggle.active .link-arrow path {
     fill: white !important;
 }

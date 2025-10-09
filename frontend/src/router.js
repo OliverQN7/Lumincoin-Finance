@@ -4,7 +4,8 @@ import {Expenses} from "./components/expenses";
 import {Login} from "./components/login";
 import {SignUp} from "./components/signup";
 import {Logout} from "./components/logout";
-import {initSidebarEvents} from './components/common';
+import {InitUserProfileName} from "./utils/ui-utils";
+import {AuthUtils} from "./utils/auth-utils";
 
 export class Router {
     constructor() {
@@ -110,6 +111,10 @@ export class Router {
         }
     }
 
+    isPrivateRoute(routeObj) {
+        return !!routeObj.useLayout;
+    }
+
     async activateRoute(e, oldRoute = null) {
         if (oldRoute) {
             const currentRoute = this.routes.find(item => item.route === oldRoute);
@@ -122,13 +127,19 @@ export class Router {
                     }
                 });
             }
-            console.log(currentRoute);
+            // console.log(currentRoute);
         }
 
         const urlRoute = window.location.pathname;
         const newRoute = this.routes.find(item => item.route === urlRoute);
 
         if (newRoute) {
+            if (this.isPrivateRoute(newRoute) && !AuthUtils.isAuthenticated()) {
+                if (window.location.pathname !== 'login') {
+                    return this.openNewRoute('/login');
+                }
+            }
+
             if (newRoute.styles && newRoute.styles.length > 0) {
                 newRoute.styles.forEach(style => {
                     const link = document.createElement("link");
@@ -157,6 +168,7 @@ export class Router {
                     contentBlock = document.getElementById('content-layout')
                 }
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
+                InitUserProfileName();
             }
 
             // --- Запуск JS-компонента
@@ -167,21 +179,36 @@ export class Router {
             const sidebarLinks = document.querySelectorAll('#sidebar .sidebar-link');
             sidebarLinks.forEach(link => link.classList.remove('active'));
             const sidebarCategoriesBtn = document.querySelector('#sidebar .btn-toggle, #sidebar .has-dropdown');
-            if (sidebarCategoriesBtn) sidebarCategoriesBtn.classList.remove('active');
-            const sidebarDropdown = document.querySelector('.sidebar-dropdown');
-            if (sidebarDropdown) sidebarDropdown.classList.remove('show');
+            const categoryRoutes = ['/income', '/expenses'];
 
-            if (['/income', '/expenses'].includes(urlRoute)) {
-                if (sidebarCategoriesBtn) sidebarCategoriesBtn.classList.add('active');
-                let activeLink = document.querySelector(`.sidebar-dropdown .sidebar-link[href='${urlRoute}']`);
-                if (activeLink) activeLink.classList.add('active');
-                if (sidebarDropdown) sidebarDropdown.classList.add('show');
-            } else {
-                let activeLink = document.querySelector(`#sidebar .sidebar-link[href='${urlRoute}']`);
-                if (activeLink) activeLink.classList.add('active');
+            if (sidebarCategoriesBtn) {
+                sidebarCategoriesBtn.classList.remove('active');
+            }
+            const sidebarDropdown = document.querySelector('.sidebar-dropdown');
+            if (sidebarDropdown) {
+                sidebarDropdown.classList.remove('show');
             }
 
-            initSidebarEvents();
+            if (categoryRoutes.includes(urlRoute)) {
+                if (sidebarCategoriesBtn) {
+                    sidebarCategoriesBtn.classList.remove('collapsed');
+                    sidebarCategoriesBtn.setAttribute('aria-expanded', 'true');
+                }
+
+                let activeLink = document.querySelector(`.sidebar-dropdown .sidebar-link[href='${urlRoute}']`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+                if (sidebarDropdown) {
+                    sidebarDropdown.classList.add('show');
+                }
+            } else {
+                let activeLink = document.querySelector(`#sidebar .sidebar-link[href='${urlRoute}']`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+
         }
     }
 }

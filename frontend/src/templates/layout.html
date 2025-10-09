@@ -53,12 +53,12 @@
                         </svg>
                     </span>
                 </a>
-                <ul class="sidebar-dropdown list-unstyled collapse" id="category" data-bs-parent="#sidebar">
+                <ul class="sidebar-dropdown list-unstyled collapse category" id="category" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="/income" class="sidebar-link btn btn-category">Доходы</a>
+                        <a href="/income" class="sidebar-link nav-link rounded-0">Доходы</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="/expenses" class="sidebar-link btn btn-category">Расходы</a>
+                        <a href="/expenses" class="sidebar-link nav-link">Расходы</a>
                     </li>
                 </ul>
             </li>
@@ -68,14 +68,27 @@
                 Баланс: <span>500$</span>
             </div>
             <div class="main__sidebar-border"></div>
-            <div class="main__sidebar-profile">
-                <img src="static/images/icons/profile.svg" alt="Профиль">
-                <div class="profile-name">Ilgiz Usmanov</div>
+
+            <div class="dropdown mt-3 mb-3">
+                <a href="#"
+                   class="d-flex align-items-center text-white text-decoration-none dropdown-toggle show"
+                   data-bs-toggle="dropdown" aria-expanded="true"> <img
+                        src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong class="text-dark" id="profile-name">mdo</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" data-popper-placement="top-start"
+                    style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -34px);">
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <a class="main__sidebar-logout dropdown-item" href="/logout">
+                            <div>Выйти</div>
+                            <img class="logout-icon" src="static/images/icons/logout.svg" alt="logout">
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <a class="main__sidebar-logout" href="/logout">
-                <div>Выйти</div>
-                <img class="logout-icon" src="static/images/icons/logout.svg" alt="logout">
-            </a>
         </div>
     </aside>
 

@@ -1,4 +1,5 @@
 import {AuthUtils} from "../utils/auth-utils";
+import {HttpUtils} from "../utils/http-utils";
 
 export class SignUp {
     constructor(openNewRoute) {
@@ -80,15 +81,28 @@ export class SignUp {
             });
 
             const result = await response.json();
-            console.log(result);
+
 
             if (result.error || !result.user) {
                 this.commonErrorElement.style.display = 'block';
                 return;
             }
 
+            const loginResult = await HttpUtils.request('/login', 'POST', {
+                email: this.emailElement.value,
+                password: this.passwordElement.value,
+            })
 
-            AuthUtils.setAuthInfo(null, null,
+            const loginResponse = await loginResult.response;
+
+            if (loginResponse.error || !loginResponse ||!loginResponse.tokens?.accessToken || !loginResponse.tokens?.refreshToken || !loginResponse.user) {
+                return this.openNewRoute('/login');
+            }
+
+
+            AuthUtils.setAuthInfo(
+                loginResponse.tokens.accessToken,
+                loginResponse.tokens.refreshToken,
                 {
                     id: result.user.id,
                     email: result.user.email,
@@ -97,7 +111,6 @@ export class SignUp {
                 }
             )
 
-            console.log('PROCESS')
             this.openNewRoute('/login');
         }
     }

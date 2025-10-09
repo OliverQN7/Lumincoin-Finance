@@ -4,7 +4,7 @@ export class Logout {
     constructor(openNewRoute) {
         this.openNewRoute = openNewRoute;
 
-        if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
+        if (!AuthUtils.isAuthenticated()) {
             return this.openNewRoute('/login')
         }
 
@@ -12,22 +12,20 @@ export class Logout {
     }
 
     async logout() {
-
-        const response = await fetch('http://localhost:3000/api/logout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-                refreshToken: localStorage.getItem('refreshToken'),
-            })
-        });
-
-        const result = await response.json();
-
-        AuthUtils.removeAuthInfo();
-
-        this.openNewRoute('/login');
+        try {
+            await fetch('http://localhost:3000/api/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    refreshToken: localStorage.getItem('refreshToken'),
+                })
+            }).catch(() => null);
+        } finally {
+            AuthUtils.removeAuthInfo();
+            this.openNewRoute('/login');
+        }
     }
 }
