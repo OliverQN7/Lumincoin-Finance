@@ -60,6 +60,26 @@ export class Router {
                 }
             },
             {
+                route: '/income-create',
+                title: 'Создание категории доходов',
+                filePathTemplate: '/templates/income-create.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeCreate?)
+                },
+                styles: ['income-create.css']
+            },
+            {
+                route: '/income-editing',
+                title: 'Редактирование категории доходов',
+                filePathTemplate: '/templates/income-editing.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeEditing?)
+                },
+                styles: ['income-create.css']
+            },
+            {
                 route: '/expenses',
                 title: 'Расходы',
                 filePathTemplate: '/templates/expenses.html',
@@ -69,12 +89,47 @@ export class Router {
                 }
             },
             {
+                route: '/expenses-create',
+                title: 'Создание категории расходов',
+                filePathTemplate: '/templates/expenses-create.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeCreate?)
+                },
+                styles: ['income-create.css']
+            },
+            {
+                route: '/expenses-editing',
+                title: 'Редактирование категории расходов',
+                filePathTemplate: '/templates/expenses-editing.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeEditing?)
+                },
+                styles: ['income-create.css']
+            },
+            {
                 route: '/operations',
                 title: 'Доходы и расходы',
                 filePathTemplate: '/templates/operations.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Expenses();
+                }
+            },
+            {
+                route: '/operations-create',
+                title: 'Создание дохода/расхода',
+                filePathTemplate: '/templates/operations-create.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                }
+            },
+            {
+                route: '/operations-editing',
+                title: 'Редактирование дохода/расхода',
+                filePathTemplate: '/templates/operations-editing.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
                 }
             },
         ]
@@ -127,7 +182,6 @@ export class Router {
                     }
                 });
             }
-            // console.log(currentRoute);
         }
 
         const urlRoute = window.location.pathname;

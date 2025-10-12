@@ -206,7 +206,7 @@ body {
     margin-bottom: 20px;
 }
 
-.main__sidebar-cash span {
+.main__sidebar-cash button {
     color: var(--main__color) !important;
 }
 
