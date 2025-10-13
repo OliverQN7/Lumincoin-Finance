@@ -4,7 +4,7 @@ import {Expenses} from "./components/expenses";
 import {Login} from "./components/login";
 import {SignUp} from "./components/signup";
 import {Logout} from "./components/logout";
-import {InitUserProfileName} from "./utils/ui-utils";
+import {InitSidebarActiveState, InitUserProfileName} from "./utils/ui-utils";
 import {AuthUtils} from "./utils/auth-utils";
 
 export class Router {
@@ -230,38 +230,7 @@ export class Router {
                 newRoute.load();
             }
 
-            const sidebarLinks = document.querySelectorAll('#sidebar .sidebar-link');
-            sidebarLinks.forEach(link => link.classList.remove('active'));
-            const sidebarCategoriesBtn = document.querySelector('#sidebar .btn-toggle, #sidebar .has-dropdown');
-            const categoryRoutes = ['/income', '/expenses'];
-
-            if (sidebarCategoriesBtn) {
-                sidebarCategoriesBtn.classList.remove('active');
-            }
-            const sidebarDropdown = document.querySelector('.sidebar-dropdown');
-            if (sidebarDropdown) {
-                sidebarDropdown.classList.remove('show');
-            }
-
-            if (categoryRoutes.includes(urlRoute)) {
-                if (sidebarCategoriesBtn) {
-                    sidebarCategoriesBtn.classList.remove('collapsed');
-                    sidebarCategoriesBtn.setAttribute('aria-expanded', 'true');
-                }
-
-                let activeLink = document.querySelector(`.sidebar-dropdown .sidebar-link[href='${urlRoute}']`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-                if (sidebarDropdown) {
-                    sidebarDropdown.classList.add('show');
-                }
-            } else {
-                let activeLink = document.querySelector(`#sidebar .sidebar-link[href='${urlRoute}']`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            }
+            InitSidebarActiveState(urlRoute);
 
         }
     }
