@@ -70,7 +70,7 @@
             <div class="main__sidebar-border"></div>
 
             <div class="dropdown mt-3 mb-3">
-                <a href="#"
+                <a href="javascript:void(0)"
                    class="d-flex align-items-center text-white text-decoration-none dropdown-toggle show"
                    data-bs-toggle="dropdown" aria-expanded="true"> <img
                         src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
@@ -94,5 +94,29 @@
 
     <div class="content-wrapper" id="content-layout">
 
+    </div>
+</div>
+
+<div class="modal fade" id="editBalanceModal" tabindex="-1" aria-labelledby="editBalanceModalLabel" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBalanceModalLabel">Редактирование баланса</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+
+            <div class="modal-body">
+                <label for="balanceInput" class="form-label">Введите новый баланс:</label>
+                <input type="number" step="1" min="0" class="form-control" id="balanceInput" placeholder="0">
+                <div id="balanceSuccess" class="text-success fw-semibold text-center mt-3" style="display:none; opacity:0;">
+                    ✅ Баланс обновлён!
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" id="saveBalanceBtn">Сохранить</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,19 +1,27 @@
 import {HttpUtils} from "../utils/http-utils";
 
 export class BalanceService {
-    static async fetchBalance() {
+    // Получаем баланс с сервера
+    static async getBalance() {
         const res = await HttpUtils.request('/balance', 'GET');
-        if (res.error || !res.response || typeof res.response.balance !== 'number') {
-            throw new Error('Failed to fetch balance');
+
+        // Проверяем корректность ответа: должен быть объект с числом
+        if (res.error || !res.response || typeof res.response.balance     !== 'number') {
+            throw new Error('Ошибка при получении баланса');
         }
+
         return res.response.balance;
     }
 
-    static async updateBalance(newValue) {
-        const res = await HttpUtils.request('/balance', 'PUT', {balance: newValue});
+    // Отправляем новый баланс на сервер
+    static async setBalance(value) {
+        const res = await HttpUtils.request('/balance', 'PUT', {newBalance: value});
+
+        // Проверяем, что сервер действительно вернул обновлённое значение
         if (res.error || !res.response || typeof res.response.balance !== 'number') {
-            throw new Error('Failed to update balance');
+            throw new Error('Ошибка при обновлении баланса');
         }
+
         return res.response.balance;
     }
 }

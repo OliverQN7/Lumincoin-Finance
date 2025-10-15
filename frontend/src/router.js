@@ -6,6 +6,7 @@ import {SignUp} from "./components/signup";
 import {Logout} from "./components/logout";
 import {InitSidebarActiveState, InitUserProfileName} from "./utils/ui-utils";
 import {AuthUtils} from "./utils/auth-utils";
+import {mountBalance, unmountBalance, handleBalanceClickToEdit} from "./utils/balance-ui";
 
 export class Router {
     constructor() {
@@ -182,6 +183,11 @@ export class Router {
                     }
                 });
             }
+
+            const prev = this.routes.find(r => r.route === oldRoute);
+            if (prev && prev.useLayout) {
+                unmountBalance();
+            }
         }
 
         const urlRoute = window.location.pathname;
@@ -219,10 +225,18 @@ export class Router {
                 let contentBlock = this.contentPageElement;
                 if (newRoute.useLayout) {
                     this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
+
+                    InitUserProfileName();
+                    if (AuthUtils.isAuthenticated()) {
+                        mountBalance({withPolling: true, interval: 15000});
+                        const balanceEl = document.querySelector('[data-balance]');
+                        if (balanceEl) balanceEl.addEventListener('click', handleBalanceClickToEdit);
+                    }
+
                     contentBlock = document.getElementById('content-layout')
                 }
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
-                InitUserProfileName();
+
             }
 
             // --- Запуск JS-компонента

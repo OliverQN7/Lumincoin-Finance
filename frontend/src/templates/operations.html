@@ -33,6 +33,8 @@
                     <th scope="col">Сумма</th>
                     <th scope="col">Дата</th>
                     <th scope="col">Комментарий</th>
+                    <th scope="col"></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -42,6 +44,7 @@
                     <th>зарплата</th>
                     <th>500$</th>
                     <th>11.09.2022</th>
+                    <th></th>
                     <th>
                         <svg width="14" height="15" viewBox="0 0 14 15" fill="none"
                              xmlns="http://www.w3.org/2000/svg" data-bs-toggle="modal"
@@ -69,6 +72,7 @@
                     <th>жильё</th>
                     <th>2 500$</th>
                     <th>12.09.2022</th>
+                    <th></th>
                     <th>
                         <svg width="14" height="15" viewBox="0 0 14 15" fill="none"
                              xmlns="http://www.w3.org/2000/svg" data-bs-toggle="modal"
@@ -95,13 +99,17 @@
         </div>
     </div>
 </div>
-<div class="modal" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<!-- Модалка удаления, только Bootstrap классы -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-body">
-                <p>Вы действительно хотите удалить операцию?</p>
+            <!-- Тело: аккуратные отступы и центрирование текста -->
+            <div class="modal-body pt-4 px-4 pb-0 mb-4">
+                <p class="mb-0 text-center">Вы действительно хотите удалить операцию?</p>
             </div>
-            <div class="modal-footer">
+
+            <!-- Подвал: центрируем кнопки и даём зазор -->
+            <div class="modal-footer justify-content-center gap-2 border-0 pt-0 px-4 pb-4">
                 <button type="button" class="btn btn-success">
                     Да, удалить
                 </button>
@@ -112,3 +120,4 @@
         </div>
     </div>
 </div>
+
