@@ -45,16 +45,28 @@ export class IncomeEditing {
                 return;
             }
 
-            const data = {title};
+            // Проверка дубликата
+            const categories = await CategoryService.getIncomeCategories();
+            const exists = categories.some(cat => cat.title === title && cat.id !== this.id);
 
-            const result = await CategoryService.updateIncomeCategory(this.id, data);
-            if (result.error) {
-                showMessage(this.container, "Ошибка при обновлении категории", "danger");
+            if (exists) {
+                showMessage(this.container, "Категория с таким названием уже существует!", "danger");
                 return;
             }
 
-            showMessage(this.container, "Категория успешно отредактирована!", "success");
-            setTimeout(() => (location.href = "/income"), 1000);
+            const data = {title};
+
+            try {
+                await CategoryService.updateIncomeCategory(this.id, data);
+                showMessage(this.container, "Категория успешно обновлена!", "success");
+                setTimeout(() => location.href = "/income", 1000);
+            } catch (err) {
+                if (err.message.includes("already exists")) {
+                    showMessage(this.container, "Категория с таким названием уже существует!", "danger");
+                } else {
+                    showMessage(this.container, "Ошибка при обновлении категории", "danger");
+                }
+            }
         });
 
         this.btnCancel.addEventListener("click", () => {

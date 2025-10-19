@@ -30,14 +30,17 @@ export class IncomeCreate {
 
             const data = {title};
 
-            const result = await CategoryService.createIncomeCategory(data);
-            if (result.error) {
-                showMessage(this.container, "Ошибка при создании категории", "danger");
-                return;
+            try {
+                await CategoryService.createIncomeCategory(data);
+                showMessage(this.container, "Категория успешно создана!", "success");
+                setTimeout(() => (location.href = "/income"), 1000);
+            } catch (e) {
+                if (e.message.includes("already exists")) {
+                    showMessage(this.container, "Категория с таким названием уже существует!", "danger");
+                } else {
+                    showMessage(this.container, "Ошибка при создании категории", "danger");
+                }
             }
-
-            showMessage(this.container, "Категория успешно создана!", "success");
-            setTimeout(() => (location.href = "/income"), 1000);
         });
 
         // Отмена
