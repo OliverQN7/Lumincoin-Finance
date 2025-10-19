@@ -43,3 +43,17 @@ export function InitSidebarActiveState(currentRoute) {
         }
     }
 }
+
+export function showMessage(container, message, type = 'danger') {
+    const alert = document.createElement('div');
+    alert.className = `alert alert-${type} mt-3 fade show`;
+    alert.role = 'alert';
+    alert.textContent = message;
+
+    // Удаляем предыдущие уведомления
+    container.querySelectorAll('.alert').forEach(a => a.remove());
+    container.appendChild(alert);
+
+    // Убираем через 3 секунды
+    setTimeout(() => alert.remove(), 2000);
+}

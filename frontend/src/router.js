@@ -7,6 +7,8 @@ import {Logout} from "./components/logout";
 import {InitSidebarActiveState, InitUserProfileName} from "./utils/ui-utils";
 import {AuthUtils} from "./utils/auth-utils";
 import {mountBalance, unmountBalance, handleBalanceClickToEdit} from "./utils/balance-ui";
+import {IncomeCreate} from "./components/income-create";
+import {IncomeEditing} from "./components/income-editing";
 
 export class Router {
     constructor() {
@@ -66,7 +68,7 @@ export class Router {
                 filePathTemplate: '/templates/income-create.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeCreate?)
+                    new IncomeCreate();
                 },
                 styles: ['income-create.css']
             },
@@ -76,7 +78,7 @@ export class Router {
                 filePathTemplate: '/templates/income-editing.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeEditing?)
+                    new IncomeEditing();
                 },
                 styles: ['income-create.css']
             },
@@ -176,7 +178,6 @@ export class Router {
             const currentRoute = this.routes.find(item => item.route === oldRoute);
             if (currentRoute.styles && currentRoute.styles.length > 0) {
                 currentRoute.styles.forEach(style => {
-                    console.log("Ищу для удаления:", `/css/${style}`, document.querySelector(`link[href='/css/${style}']`));
                     const linkEl = document.querySelector(`link[href='/css/${style}']`);
                     if (linkEl) {
                         linkEl.remove();

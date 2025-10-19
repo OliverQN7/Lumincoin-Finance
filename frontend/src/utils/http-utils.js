@@ -19,7 +19,6 @@ export class HttpUtils {
         const token = AuthUtils.getAuthInfo(AuthUtils.accessTokenKey);
         if (token) {
             headers['x-auth-token'] = token;
-            console.log('Token:', token);
         }
 
         const params = {
@@ -34,7 +33,6 @@ export class HttpUtils {
         let response = null;
         try {
             response = await fetch(config.api + url, params);
-            console.log('Response:', response);
             result.response = await response.json();
         } catch (e) {
             result.error = true;
