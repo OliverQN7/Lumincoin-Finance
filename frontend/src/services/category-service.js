@@ -1,6 +1,8 @@
 import {HttpUtils} from "../utils/http-utils";
 
 export class CategoryService {
+
+    // --- Доходы ---
     static async getIncomeCategories() {
         const result = await HttpUtils.request("/categories/income", "GET");
 
@@ -42,6 +44,47 @@ export class CategoryService {
 
         if (result.error) {
             throw new Error(result.response?.message || "Ошибка при удалении категории дохода");
+        }
+        return result.response;
+    }
+
+    // --- Расходы ---
+    static async getExpenseCategories() {
+        const result = await HttpUtils.request("/categories/expense", "GET");
+        if (result.error) {
+            throw new Error(result.response?.message || "Ошибка загрузки категорий расходов");
+        }
+        return result.response;
+    }
+
+    static async getExpenseCategoryById(id) {
+        const result = await HttpUtils.request(`/categories/expense/${id}`, 'GET');
+        if (result.error) {
+            throw new Error(result.response?.message || "Ошибка при получении категории расхода");
+        }
+        return result.response;
+    }
+
+    static async createExpenseCategory(data) {
+        const result = await HttpUtils.request(`/categories/expense`, 'POST', data);
+        if (result.error) {
+            throw new Error(result.response?.message || "Ошибка при создании категории расхода");
+        }
+        return result.response;
+    }
+
+    static async updateExpenseCategory(id, data) {
+        const result = await HttpUtils.request(`/categories/expense/${id}`, 'PUT', data);
+        if (result.error) {
+            throw new Error(result.response?.message || "Ошибка при обновлении категории расхода");
+        }
+        return result.response;
+    }
+
+    static async deleteExpenseCategory(id) {
+        const result = await HttpUtils.request(`/categories/expense/${id}`, 'DELETE');
+        if (result.error) {
+            throw new Error(result.response?.message || "Ошибка при удалении категории расхода");
         }
         return result.response;
     }

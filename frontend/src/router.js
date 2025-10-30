@@ -9,6 +9,8 @@ import {AuthUtils} from "./utils/auth-utils";
 import {mountBalance, unmountBalance, handleBalanceClickToEdit} from "./utils/balance-ui";
 import {IncomeCreate} from "./components/income-create";
 import {IncomeEditing} from "./components/income-editing";
+import {ExpensesCreate} from "./components/expenses-create";
+import {ExpensesEditing} from "./components/expenses-editing";
 
 export class Router {
     constructor() {
@@ -97,7 +99,7 @@ export class Router {
                 filePathTemplate: '/templates/expenses-create.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeCreate?)
+                    new ExpensesCreate();
                 },
                 styles: ['income-create.css']
             },
@@ -107,7 +109,7 @@ export class Router {
                 filePathTemplate: '/templates/expenses-editing.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeEditing?)
+                    new ExpensesEditing();
                 },
                 styles: ['income-create.css']
             },
