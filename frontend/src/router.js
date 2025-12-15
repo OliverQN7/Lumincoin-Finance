@@ -11,6 +11,9 @@ import {IncomeCreate} from "./components/income-create";
 import {IncomeEditing} from "./components/income-editing";
 import {ExpensesCreate} from "./components/expenses-create";
 import {ExpensesEditing} from "./components/expenses-editing";
+import {Operations} from "./components/operations";
+import {OperationCreate} from "./components/operations-create";
+import {OperationEditing} from "./components/operations-editing";
 
 export class Router {
     constructor() {
@@ -106,7 +109,7 @@ export class Router {
             {
                 route: '/expenses-editing',
                 title: 'Редактирование категории расходов',
-                filePathTemplate: '/templates/expenses-editing.html',
+                filePathTemplate: '/tempcdlates/expenses-editing.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new ExpensesEditing();
@@ -119,6 +122,7 @@ export class Router {
                 filePathTemplate: '/templates/operations.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new Operations();
                 }
             },
             {
@@ -127,6 +131,7 @@ export class Router {
                 filePathTemplate: '/templates/operations-create.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new OperationCreate();
                 }
             },
             {
@@ -135,6 +140,7 @@ export class Router {
                 filePathTemplate: '/templates/operations-editing.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new OperationEditing();
                 }
             },
         ]
