@@ -417,3 +417,7 @@ body {
     gap: 10px;
     min-height: 200px;
 }
+
+.table>:not(caption)>*>* {
+    box-shadow: none;
+}
