@@ -4,8 +4,16 @@ import {Expenses} from "./components/expenses";
 import {Login} from "./components/login";
 import {SignUp} from "./components/signup";
 import {Logout} from "./components/logout";
-import {InitUserProfileName} from "./utils/ui-utils";
+import {InitSidebarActiveState, InitUserProfileName} from "./utils/ui-utils";
 import {AuthUtils} from "./utils/auth-utils";
+import {mountBalance, unmountBalance, handleBalanceClickToEdit} from "./utils/balance-ui";
+import {IncomeCreate} from "./components/income-create";
+import {IncomeEditing} from "./components/income-editing";
+import {ExpensesCreate} from "./components/expenses-create";
+import {ExpensesEditing} from "./components/expenses-editing";
+import {Operations} from "./components/operations";
+import {OperationCreate} from "./components/operations-create";
+import {OperationEditing} from "./components/operations-editing";
 
 export class Router {
     constructor() {
@@ -65,7 +73,7 @@ export class Router {
                 filePathTemplate: '/templates/income-create.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeCreate?)
+                    new IncomeCreate();
                 },
                 styles: ['income-create.css']
             },
@@ -75,7 +83,7 @@ export class Router {
                 filePathTemplate: '/templates/income-editing.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeEditing?)
+                    new IncomeEditing();
                 },
                 styles: ['income-create.css']
             },
@@ -94,17 +102,17 @@ export class Router {
                 filePathTemplate: '/templates/expenses-create.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeCreate?)
+                    new ExpensesCreate();
                 },
                 styles: ['income-create.css']
             },
             {
                 route: '/expenses-editing',
                 title: 'Редактирование категории расходов',
-                filePathTemplate: '/templates/expenses-editing.html',
+                filePathTemplate: '/tempcdlates/expenses-editing.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    // все операции делать в Income(через new Income(); или сделать новый экземпляр класса new IncomeEditing?)
+                    new ExpensesEditing();
                 },
                 styles: ['income-create.css']
             },
@@ -114,6 +122,7 @@ export class Router {
                 filePathTemplate: '/templates/operations.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new Operations();
                 }
             },
             {
@@ -122,6 +131,7 @@ export class Router {
                 filePathTemplate: '/templates/operations-create.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new OperationCreate();
                 }
             },
             {
@@ -130,6 +140,7 @@ export class Router {
                 filePathTemplate: '/templates/operations-editing.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new OperationEditing();
                 }
             },
         ]
@@ -175,12 +186,16 @@ export class Router {
             const currentRoute = this.routes.find(item => item.route === oldRoute);
             if (currentRoute.styles && currentRoute.styles.length > 0) {
                 currentRoute.styles.forEach(style => {
-                    console.log("Ищу для удаления:", `/css/${style}`, document.querySelector(`link[href='/css/${style}']`));
                     const linkEl = document.querySelector(`link[href='/css/${style}']`);
                     if (linkEl) {
                         linkEl.remove();
                     }
                 });
+            }
+
+            const prev = this.routes.find(r => r.route === oldRoute);
+            if (prev && prev.useLayout) {
+                unmountBalance();
             }
         }
 
@@ -219,10 +234,18 @@ export class Router {
                 let contentBlock = this.contentPageElement;
                 if (newRoute.useLayout) {
                     this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
+
+                    InitUserProfileName();
+                    if (AuthUtils.isAuthenticated()) {
+                        mountBalance({withPolling: true, interval: 15000});
+                        const balanceEl = document.querySelector('[data-balance]');
+                        if (balanceEl) balanceEl.addEventListener('click', handleBalanceClickToEdit);
+                    }
+
                     contentBlock = document.getElementById('content-layout')
                 }
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
-                InitUserProfileName();
+
             }
 
             // --- Запуск JS-компонента
@@ -230,38 +253,7 @@ export class Router {
                 newRoute.load();
             }
 
-            const sidebarLinks = document.querySelectorAll('#sidebar .sidebar-link');
-            sidebarLinks.forEach(link => link.classList.remove('active'));
-            const sidebarCategoriesBtn = document.querySelector('#sidebar .btn-toggle, #sidebar .has-dropdown');
-            const categoryRoutes = ['/income', '/expenses'];
-
-            if (sidebarCategoriesBtn) {
-                sidebarCategoriesBtn.classList.remove('active');
-            }
-            const sidebarDropdown = document.querySelector('.sidebar-dropdown');
-            if (sidebarDropdown) {
-                sidebarDropdown.classList.remove('show');
-            }
-
-            if (categoryRoutes.includes(urlRoute)) {
-                if (sidebarCategoriesBtn) {
-                    sidebarCategoriesBtn.classList.remove('collapsed');
-                    sidebarCategoriesBtn.setAttribute('aria-expanded', 'true');
-                }
-
-                let activeLink = document.querySelector(`.sidebar-dropdown .sidebar-link[href='${urlRoute}']`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-                if (sidebarDropdown) {
-                    sidebarDropdown.classList.add('show');
-                }
-            } else {
-                let activeLink = document.querySelector(`#sidebar .sidebar-link[href='${urlRoute}']`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            }
+            InitSidebarActiveState(urlRoute);
 
         }
     }

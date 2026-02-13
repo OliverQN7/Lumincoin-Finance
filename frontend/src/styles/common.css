@@ -256,20 +256,22 @@ body {
     margin-left: 10px;
 }
 
+.content-wrapper,
+#content-layout,
 .main__content {
-    margin: 100px 0 0 60px;
-    flex-grow: 1;
+    width: 100%;
+    max-width: 100%;
 }
 
-.main__content-title {
-    margin-bottom: 40px;
+.main__content {
+    margin: 0;
+    padding: 100px 24px 0;
 }
 
 .main__content-block {
-    max-width: 1100px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* адаптивные колонки */
+    gap: 20px;
 }
 
 .main__content-container {
@@ -318,15 +320,14 @@ body {
 }
 
 .card {
-    width: 352px;
-    max-width: 352px;
-    min-width: 352px;
-    margin-bottom: 20px;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
 }
 
 .card:not(:last-child) {
-    margin-right: 20px;
-
+    margin-right: 0;
 }
 
 .card-body {
@@ -379,40 +380,11 @@ body {
     margin-top: 20px;
 }
 
-
-.modal-dialog {
-    padding: 0;
-    margin: 0;
-    top: 35%;
-    left: 35%;
-
-}
-
-.modal-content {
-    width: 530px;
-    max-width: 530px;
-}
-
-.modal-body {
-    margin: 0;
-    padding: 0;
-}
-
 .modal-body p {
     font-family: "Roboto Medium", sans-serif;
     font-size: 20px;
     color: var(--chart__color);
-    width: 450px;
-    max-width: 450px;
     text-align: center;
-    margin: 40px 40px 10px 40px;
-}
-
-.modal-footer {
-    margin: 12px 0 40px 0;
-    padding: 0;
-    justify-content: center;
-    border-top: 0;
 }
 
 .invalid-feedback {
@@ -426,4 +398,26 @@ body {
 
 .btn-toggle.active .link-arrow path {
     fill: white !important;
+}
+
+#profile-name {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 200px;
+}
+
+.table>:not(caption)>*>* {
+    box-shadow: none;
 }

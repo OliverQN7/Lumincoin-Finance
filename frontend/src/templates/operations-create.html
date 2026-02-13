@@ -1,43 +1,55 @@
+<!-- templates/operations-create.html -->
 <div class="main__content">
     <div class="container main__content-container">
         <h1 class="main__content-title">Создание дохода/расхода</h1>
         <div class="main__content-form">
+            <!-- Тип операции -->
             <div class="form__block form__block-type">
-                <input type="text" id="operation-type" class="form-control" placeholder="Тип...">
+                <select id="operation-type" class="form-control">
+                    <option value="income">Доход</option>
+                    <option value="expense">Расход</option>
+                </select>
                 <label for="operation-type"></label>
             </div>
+
+            <!-- Категория -->
             <div class="form__block form__block-category">
-                <input type="text" id="operation-category" class="form-control" placeholder="Категория...">
+                <select id="operation-category" class="form-control">
+                    <!-- Опции подставит JS -->
+                </select>
                 <label for="operation-category"></label>
             </div>
+
+            <!-- Новая категория (опционально) -->
+            <div class="form__block form__block-category-new">
+                <input type="text" id="operation-new-category" class="form-control"
+                       placeholder="Новая категория (необязательно)">
+                <label for="operation-new-category"></label>
+            </div>
+
+            <!-- Сумма -->
             <div class="form__block form__block-sum">
-                <input type="text" id="operation-sum" class="form-control" placeholder="Сумма в $...">
+                <input type="number" id="operation-sum" class="form-control"
+                       placeholder="Сумма в $..." min="0" step="0.01">
                 <label for="operation-sum"></label>
             </div>
+
+            <!-- Дата -->
             <div class="form__block form__block-date">
-                <input type="text" id="operation-date" class="form-control" placeholder="Дата...">
+                <input type="date" id="operation-date" class="form-control" placeholder="Дата...">
                 <label for="operation-date"></label>
             </div>
+
+            <!-- Комментарий -->
             <div class="form__block form__block-comm">
                 <input type="text" id="operation-comm" class="form-control" placeholder="Комментарий...">
                 <label for="operation-comm"></label>
             </div>
+
+            <!-- Кнопки -->
             <div class="form__block form__block-actions">
                 <button class="btn btn-success">Создать</button>
                 <button class="btn btn-danger">Отмена</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <p>Вы действительно хотите удалить операцию?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success">Да, удалить</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
             </div>
         </div>
     </div>
